@@ -7,9 +7,16 @@
     </div>
 
     <div class="col-6">
-      <%= form_with model: Tweet.new, url: tweets_path, method: :post, local: true do |f| %>
-        <%= f.text_field :body %>
-        <%= f.submit %>
+      <div class="mb-4">
+        <%= link_to "Home", dashboard_path, class: "fs-5 fw-semibold text-decoration-none text-black" %>
+      </div>
+
+      <%= form_with model: Tweet.new, url: tweets_path, method: :post, local: true, class: "w-100" do |f| %>
+        <%= f.text_area :body, placeholder: "What's happening?", class: "form-control tweet-input w-100" %>
+
+        <div class="d-flex justify-content-end mt-2">
+          <%= f.submit "Tweet", class: "btn btn-lg btn-twitter rounded-pill" %>
+        </div>
       <% end %>
 
       <ul>
