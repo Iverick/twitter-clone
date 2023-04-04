@@ -22,7 +22,8 @@ RSpec.describe "Dashboard", type: :request do
             }
           }
         end.to change { user.reload.username }.from(nil).to("foobaz")
-  
+
+        expect(user.display_name).to eq("Foobaz")
         expect(response).to redirect_to dashboard_path
       end
     end
