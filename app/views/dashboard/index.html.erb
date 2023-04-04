@@ -15,9 +15,9 @@
         <%= render "shared/tweet_form" %>
       </div>
 
-      <% @tweets.each do |tweet| %>
-        <%= render "tweets/tweet", tweet: tweet %>
-      <% end %>
+      <div id="tweets">
+        <%= render @tweets %>
+      </div>
     </div>
 
     <div class="col">
