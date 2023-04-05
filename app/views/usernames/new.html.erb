@@ -1,5 +1,5 @@
 <div class="registration-container container-sm py-5">
-  <h2>Set your username</h2>
+  <h2>Set your profile</h2>
 
   <%= form_with model: current_user, url: username_path(current_user), local: true do |f| %>
     <div class="mb-3">
@@ -12,8 +12,13 @@
       <%= f.text_field :display_name, class: "form-control" %>
     </div>
 
+    <div class="input-group mb-3">
+      <%= f.label :avatar, class: "input-group-text" %>
+      <%= f.file_field :avatar, class: "form-control" %>
+    </div>
+
     <div class="mb-3">
-      <%= f.submit "Set username", class: "btn btn-lg btn-twitter rounded-pill" %>
+      <%= f.submit "Set profile", class: "btn btn-lg btn-twitter rounded-pill" %>
     </div>
   <% end %>
 </div>
