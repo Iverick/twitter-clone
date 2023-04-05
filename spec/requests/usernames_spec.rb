@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Dashboard", type: :request do
+RSpec.describe "Usernames", type: :request do
   let(:user) { create(:user, username: nil) }
 
   before { sign_in user }
