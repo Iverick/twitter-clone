@@ -1,7 +1,11 @@
 <%= turbo_frame_tag dom_id(tweet_presenter.tweet) do %>
   <div class="d-flex tweet py-3 px-3">
     <div class="flex-shrink-0">
-      <%= image_tag tweet_presenter.avatar, size: 48, class: "rounded-circle" %>
+      <% if tweet_presenter.avatar.present? %>
+        <%= image_tag tweet_presenter.avatar, size: 48, class: "rounded-circle" %>
+      <% else %>
+        <%= image_tag "userpic.png", size: 48, class: "rounded-circle" %>
+      <% end %>
     </div>
     <div class="flex-grow-1 ms-3">
       <p class="mb-1">
@@ -9,7 +13,40 @@
         <span class="text-muted">@<%= tweet_presenter.username %> · <%= tweet_presenter.created_at %><span>
       </p>
 
-      <p class="mb-0"><%= tweet_presenter.body %></p>
+      <p><%= tweet_presenter.body %></p>
+
+      <div class="d-flex justify-content-between action-links">
+        <div class="btn-group">
+          <%= link_to "#", class: "text-decoration-none text-black replies" do %>
+            <%= image_tag "replies.png", size: "20x20", class: "me-1" %>
+            <span>Replies</span>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to "#", class: "text-decoration-none text-black retweets" do %>
+            <%= image_tag "retweet.png", size: "20x20", class: "me-1" %>
+            <span>Retweet</span>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to "#", class: "text-decoration-none text-black like" do %>
+            <%= image_tag "like.png", size: "20x20", class: "me-1" %>
+            <span>Like</span>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to "#", class: "text-decoration-none text-black views" do %>
+            <%= image_tag "views.png", size: "20x20", class: "me-1" %>
+            <span>Views</span>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to "#", class: "text-decoration-none text-black bookmark" do %>
+            <%= image_tag "bookmark.png", size: "20x20", class: "me-1" %>
+            <span>Bookmark</span>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
