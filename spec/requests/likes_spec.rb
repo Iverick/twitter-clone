@@ -9,7 +9,7 @@ RSpec.describe "Likes", type: :request do
   describe "POST create" do
     it "creates a new like" do
       expect { post tweet_likes_path(tweet), xhr: true }.to change { Like.count }.by(1)
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:redirect)
     end
   end
 
@@ -17,7 +17,7 @@ RSpec.describe "Likes", type: :request do
     it "deletes a like" do
       like = create(:like, user: user, tweet: tweet)
       expect { delete tweet_like_path(tweet, like), xhr: true }.to change { Like.count }.by(-1)
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:redirect)
     end
   end
 end

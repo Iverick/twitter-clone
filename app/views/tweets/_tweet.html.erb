@@ -33,7 +33,7 @@
           <% end %>
         </div>
         <div>
-          <%= link_to tweet_presenter.like_tweet_url, data: { "turbo-method": tweet_presenter.turbo_data_method }, class: "text-decoration-none text-black " + tweet_presenter.like_icon_class do %>
+          <%= link_to tweet_presenter.like_tweet_url, data: { "turbo-method": tweet_presenter.like_turbo_data_method }, class: "text-decoration-none text-black " + tweet_presenter.like_icon_class do %>
             <div class="d-flex align-items-center">
               <i class="bi <%= tweet_presenter.like_icon %> me-1"></i>
               <span class="mb-1"><%= tweet_presenter.likes_count %></span>
@@ -49,10 +49,10 @@
           <% end %>
         </div>
         <div>
-          <%= link_to "#", class: "text-decoration-none text-black bookmark" do %>
+          <%= link_to tweet_presenter.bookmark_tweet_url, data: { "turbo-method": tweet_presenter.bookmark_turbo_data_method }, class: "text-decoration-none text-black bookmark" do %>
             <div class="d-flex align-items-center">
-              <i class="bi bi-bookmark me-1"></i>
-              <span class="mb-1">Bookmark</span>
+              <i class="bi <%= tweet_presenter.bookmark_icon %> me-1"></i>
+              <span class="mb-1"><%= tweet_presenter.bookmark_link_text %></span>
             </div>
           <% end %>
         </div>
