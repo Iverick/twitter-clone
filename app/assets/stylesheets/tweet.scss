@@ -38,6 +38,10 @@
           color: $red-500 !important;
         }
       }
+
+      &.liked {
+        color: $red-500 !important;
+      }
     }
   }
 }

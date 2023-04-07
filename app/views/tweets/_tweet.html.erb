@@ -18,32 +18,42 @@
       <div class="d-flex justify-content-between action-links">
         <div class="btn-group">
           <%= link_to "#", class: "text-decoration-none text-black replies" do %>
-            <%= image_tag "replies.png", size: "20x20", class: "me-1" %>
-            <span>Replies</span>
+            <div class="d-flex align-items-center">
+              <i class="bi bi-chat me-1"></i>
+              <span class="mb-1">Replies</span>
+            </div>
           <% end %>
         </div>
         <div>
           <%= link_to "#", class: "text-decoration-none text-black retweets" do %>
-            <%= image_tag "retweet.png", size: "20x20", class: "me-1" %>
-            <span>Retweet</span>
+            <div class="d-flex align-items-center">
+              <i class="bi bi-arrow-repeat me-1"></i>
+              <span class="mb-1">Retweet</span>
+            </div>
           <% end %>
         </div>
         <div>
-          <%= link_to tweet_presenter.like_tweet_url, data: { "turbo-method": tweet_presenter.turbo_data_method }, class: "text-decoration-none text-black like" do %>
-            <%= image_tag tweet_presenter.like_image, size: "20x20", class: "me-1" %>
-            <span><%= tweet_presenter.likes_count %></span>
+          <%= link_to tweet_presenter.like_tweet_url, data: { "turbo-method": tweet_presenter.turbo_data_method }, class: "text-decoration-none text-black " + tweet_presenter.like_icon_class do %>
+            <div class="d-flex align-items-center">
+              <i class="bi <%= tweet_presenter.like_icon %> me-1"></i>
+              <span class="mb-1"><%= tweet_presenter.likes_count %></span>
+            </div>
           <% end %>
         </div>
         <div>
           <%= link_to "#", class: "text-decoration-none text-black views" do %>
-            <%= image_tag "views.png", size: "20x20", class: "me-1" %>
-            <span>Views</span>
+            <div class="d-flex align-items-center">
+              <i class="bi bi-bar-chart me-1"></i>
+              <span class="mb-1">Views</span>
+            </div>
           <% end %>
         </div>
         <div>
           <%= link_to "#", class: "text-decoration-none text-black bookmark" do %>
-            <%= image_tag "bookmark.png", size: "20x20", class: "me-1" %>
-            <span>Bookmark</span>
+            <div class="d-flex align-items-center">
+              <i class="bi bi-bookmark me-1"></i>
+              <span class="mb-1">Bookmark</span>
+            </div>
           <% end %>
         </div>
       </div>

@@ -32,8 +32,12 @@ class TweetPresenter
     tweet_liked_by_current_user? ? "delete" : "post"
   end
 
-  def like_image
-    tweet_liked_by_current_user? ? "liked.png" : "like.png"
+  def like_icon
+    tweet_liked_by_current_user? ? "bi-heart-fill" : "bi-heart"
+  end
+
+  def like_icon_class
+    tweet_liked_by_current_user? ? "liked" : "like"
   end
 
   private
