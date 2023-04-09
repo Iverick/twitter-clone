@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(tweet_presenter.tweet) do %>
-  <div class="d-flex tweet py-3 px-3">
+  <div data-controller="tweet-card" data-tweet-path="<%= tweet_path(tweet_presenter.tweet) %>" class="d-flex tweet py-3 px-3">
     <div class="flex-shrink-0">
       <% if tweet_presenter.avatar.present? %>
         <%= image_tag tweet_presenter.avatar, size: 48, class: "rounded-circle" %>
@@ -17,8 +17,8 @@
 
       <div class="d-flex justify-content-between action-links">
         <div class="btn-group">
-          <%= link_to "#", class: "text-decoration-none text-black replies" do %>
-            <div class="d-flex align-items-center">
+          <%= link_to tweet_path(tweet_presenter.tweet), class: "text-decoration-none text-black replies" do %>
+            <div data-ignore-click="true" class="d-flex align-items-center">
               <i class="bi bi-chat me-1"></i>
               <span class="mb-1">Replies</span>
             </div>
@@ -26,7 +26,7 @@
         </div>
         <div>
           <%= link_to "#", class: "text-decoration-none text-black retweets" do %>
-            <div class="d-flex align-items-center">
+            <div data-ignore-click="true" class="d-flex align-items-center">
               <i class="bi bi-arrow-repeat me-1"></i>
               <span class="mb-1">Retweet</span>
             </div>
@@ -34,7 +34,7 @@
         </div>
         <div>
           <%= link_to tweet_presenter.like_tweet_url, data: { "turbo-method": tweet_presenter.like_turbo_data_method }, class: "text-decoration-none text-black " + tweet_presenter.like_icon_class do %>
-            <div class="d-flex align-items-center">
+            <div data-ignore-click="true" class="d-flex align-items-center">
               <i class="bi <%= tweet_presenter.like_icon %> me-1"></i>
               <span class="mb-1"><%= tweet_presenter.likes_count %></span>
             </div>
@@ -42,7 +42,7 @@
         </div>
         <div>
           <%= link_to "#", class: "text-decoration-none text-black views" do %>
-            <div class="d-flex align-items-center">
+            <div data-ignore-click="true" class="d-flex align-items-center">
               <i class="bi bi-bar-chart me-1"></i>
               <span class="mb-1">Views</span>
             </div>
@@ -50,7 +50,7 @@
         </div>
         <div>
           <%= link_to tweet_presenter.bookmark_tweet_url, data: { "turbo-method": tweet_presenter.bookmark_turbo_data_method }, class: "text-decoration-none text-black bookmark" do %>
-            <div class="d-flex align-items-center">
+            <div data-ignore-click="true" class="d-flex align-items-center">
               <i class="bi <%= tweet_presenter.bookmark_icon %> me-1"></i>
               <span class="mb-1"><%= tweet_presenter.bookmark_link_text %></span>
             </div>

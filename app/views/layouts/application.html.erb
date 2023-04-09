@@ -16,6 +16,21 @@
       <%= render "shared/flash" %>
     <% end %>
 
-    <%= yield %>
+    <div class="container py-2">
+      <% if user_signed_in? %>
+        <div class="row">
+          <div class="col">
+            <%= render "shared/sidebar" %>
+          </div>
+            
+          <%= yield %>
+        </div>
+      
+      <% else %>
+
+        <%= yield %>
+        
+      <% end %>
+    </div>
   </body>
 </html>

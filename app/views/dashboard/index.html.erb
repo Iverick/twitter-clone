@@ -1,27 +1,17 @@
-<div class="container py-2">
-  <div class="row">
-    <div class="col">
-      <% if user_signed_in? %>
-        <%= render "shared/sidebar" %>
-      <% end %>
-    </div>
-
-    <div class="col-6">
-      <div class="mb-4">
-        <%= link_to "Home", dashboard_path, class: "fs-5 fw-semibold text-decoration-none text-black" %>
-      </div>
-
-      <div class="mb-3">
-        <%= render "shared/tweet_form" %>
-      </div>
-
-      <div id="tweets">
-        <%= render partial: "tweets/tweet", collection: @tweets, as: :tweet_presenter %>
-      </div>
-    </div>
-
-    <div class="col">
-      Column
-    </div>
+<div class="col-6">
+  <div class="mb-4">
+    <%= link_to "Home", dashboard_path, class: "fs-5 fw-semibold text-decoration-none text-black" %>
   </div>
+
+  <div class="mb-3">
+    <%= render "shared/tweet_form" %>
+  </div>
+
+  <div id="tweets">
+    <%= render partial: "tweets/tweet", collection: @tweets, as: :tweet_presenter %>
+  </div>
+</div>
+
+<div class="col">
+  Column
 </div>

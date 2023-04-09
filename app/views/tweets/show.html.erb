@@ -1,0 +1,19 @@
+<meta name="turbo-visit-control" content="reload">
+
+<div class="col-6">
+  <div class="d-flex flex-row align-items-center">
+    <%= link_to :back, class: "me-4 text-decoration-none text-black" do %>
+      <h3><i class="bi bi-arrow-left"></i></h3>
+    <% end %>
+
+    <%= link_to tweet_path(@tweet), class: "text-decoration-none text-black" do %>
+      <h3>Tweet</h3>
+    <% end %>
+  </div>
+
+  <h1>Hello <%= @tweet.body %></h1>
+</div>
+
+<div class="col">
+  Column
+</div>
