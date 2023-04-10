@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   root "home#index"
   
   resources :tweets, only: [:show, :create] do
-    resources :likes, only: [:create, :destroy]
     resources :bookmarks, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
+    resources :retweets, only: [:create, :destroy]
   end
 
   get :dashboard, to: "dashboard#index"

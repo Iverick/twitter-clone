@@ -1,8 +1,8 @@
-class BookmarksController < ApplicationController
+class RetweetsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @bookmark = current_user.bookmarks.create(tweet: tweet)
+    @retweet = current_user.retweets.create(tweet: tweet)
     respond_to do |format|
       format.html { redirect_to dashboard_path }
       format.turbo_stream
@@ -10,8 +10,8 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @bookmark = tweet.bookmarks.find(params[:id])
-    @bookmark.destroy
+    @retweet = tweet.retweets.find(params[:id])
+    @retweet.destroy
     respond_to do |format|
       format.html { redirect_to dashboard_path }
       format.turbo_stream

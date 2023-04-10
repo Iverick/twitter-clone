@@ -19,23 +19,23 @@
         <div class="btn-group">
           <%= link_to tweet_path(tweet_presenter.tweet), class: "text-decoration-none text-black replies" do %>
             <div data-ignore-click="true" class="d-flex align-items-center">
-              <i class="bi bi-chat me-1"></i>
+              <i class="bi bi-chat fs-5 me-1"></i>
               <span class="mb-1">Replies</span>
             </div>
           <% end %>
         </div>
         <div>
-          <%= link_to "#", class: "text-decoration-none text-black retweets" do %>
+          <%= link_to tweet_presenter.retweet_url, data: { "turbo-method": tweet_presenter.retweet_turbo_data_method }, class: "text-decoration-none text-black " + tweet_presenter.retweet_icon_class do %>
             <div data-ignore-click="true" class="d-flex align-items-center">
-              <i class="bi bi-arrow-repeat me-1"></i>
-              <span class="mb-1">Retweet</span>
+              <i class="bi bi-arrow-repeat fs-5 me-1"></i>
+              <span class="mb-1"><%= tweet_presenter.retweets_count %></span>
             </div>
           <% end %>
         </div>
         <div>
           <%= link_to tweet_presenter.like_tweet_url, data: { "turbo-method": tweet_presenter.like_turbo_data_method }, class: "text-decoration-none text-black " + tweet_presenter.like_icon_class do %>
             <div data-ignore-click="true" class="d-flex align-items-center">
-              <i class="bi <%= tweet_presenter.like_icon %> me-1"></i>
+              <i class="bi <%= tweet_presenter.like_icon %> fs-5 me-1"></i>
               <span class="mb-1"><%= tweet_presenter.likes_count %></span>
             </div>
           <% end %>
@@ -43,7 +43,7 @@
         <div>
           <%= link_to "#", class: "text-decoration-none text-black views" do %>
             <div data-ignore-click="true" class="d-flex align-items-center">
-              <i class="bi bi-bar-chart me-1"></i>
+              <i class="bi bi-bar-chart fs-5 me-1"></i>
               <span class="mb-1">Views</span>
             </div>
           <% end %>
@@ -51,7 +51,7 @@
         <div>
           <%= link_to tweet_presenter.bookmark_tweet_url, data: { "turbo-method": tweet_presenter.bookmark_turbo_data_method }, class: "text-decoration-none text-black bookmark" do %>
             <div data-ignore-click="true" class="d-flex align-items-center">
-              <i class="bi <%= tweet_presenter.bookmark_icon %> me-1"></i>
+              <i class="bi <%= tweet_presenter.bookmark_icon %> fs-5 me-1"></i>
               <span class="mb-1"><%= tweet_presenter.bookmark_link_text %></span>
             </div>
           <% end %>

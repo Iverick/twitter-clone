@@ -43,7 +43,7 @@
             <% end %>
           </div>
           <div>
-            <%= link_to "#", class: "text-decoration-none text-black retweets" do %>
+            <%= link_to @tweet_presenter.retweet_url, data: { "turbo-method": @tweet_presenter.retweet_turbo_data_method }, class: "text-decoration-none text-black " + @tweet_presenter.retweet_icon_class do %>
               <div data-ignore-click="true" class="d-flex align-items-center">
                 <i class="bi bi-arrow-repeat fs-4 me-1"></i>
               </div>

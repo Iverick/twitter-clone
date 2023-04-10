@@ -33,6 +33,10 @@
         }
       }
 
+      &.retweeted {
+        color: $green-300 !important;
+      }
+
       &.like {
         &:hover {
           color: $red-500 !important;

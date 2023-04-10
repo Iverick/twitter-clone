@@ -9,7 +9,7 @@ class TweetPresenter
 
   attr_reader :tweet, :current_user
 
-  delegate :user, :body, :likes, :likes_count, to: :tweet
+  delegate :user, :body, :likes, :retweets, :likes_count, :retweets_count, to: :tweet
   delegate :display_name, :username, :avatar, to: :user
 
   def created_at
@@ -62,6 +62,23 @@ class TweetPresenter
     tweet_bookmarked_by_current_user? ? "Bookmarked" : "Bookmark"
   end
 
+  # Retweet helper methods
+  def retweet_url
+    if tweet_retweeted_by_current_user?
+      tweet_retweet_path(tweet, current_user.retweets.find_by(tweet: tweet))
+    else
+      tweet_retweets_path(tweet)
+    end
+  end
+
+  def retweet_turbo_data_method
+    tweet_retweeted_by_current_user? ? "delete" : "post"
+  end
+
+  def retweet_icon_class
+    tweet_retweeted_by_current_user? ? "retweeted" : "retweets"
+  end
+
   private
 
   def tweet_liked_by_current_user
@@ -73,4 +90,9 @@ class TweetPresenter
     @tweet_bookmarked_by_current_user ||= tweet.bookmarked_users.include?(current_user)
   end
   alias_method :tweet_bookmarked_by_current_user?, :tweet_bookmarked_by_current_user
+
+  def tweet_retweeted_by_current_user
+    @tweet_retweeted_by_current_user ||= tweet.retweeted_users.include?(current_user)
+  end
+  alias_method :tweet_retweeted_by_current_user?, :tweet_retweeted_by_current_user
 end
