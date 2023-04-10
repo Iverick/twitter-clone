@@ -1,17 +1,72 @@
 <meta name="turbo-visit-control" content="reload">
 
 <div class="col-6">
-  <div class="d-flex flex-row align-items-center">
     <%= link_to :back, class: "me-4 text-decoration-none text-black" do %>
-      <h3><i class="bi bi-arrow-left"></i></h3>
-    <% end %>
-
-    <%= link_to tweet_path(@tweet), class: "text-decoration-none text-black" do %>
+  <div class="d-flex flex-row align-items-center">
+      <h3 class="me-4"><i class="bi bi-arrow-left"></i></h3>
       <h3>Tweet</h3>
-    <% end %>
   </div>
+    <% end %>
 
-  <h1>Hello <%= @tweet.body %></h1>
+  <%= turbo_frame_tag dom_id(@tweet_presenter.tweet) do %>
+    <div data-controller="tweet-card" data-tweet-path="<%= tweet_path(@tweet_presenter.tweet) %>" class="d-flex tweet py-3 px-3">
+      <div class="flex-shrink-0">
+        <% if @tweet_presenter.avatar.present? %>
+          <%= image_tag @tweet_presenter.avatar, size: 48, class: "rounded-circle" %>
+        <% else %>
+          <%= image_tag "userpic.png", size: 48, class: "rounded-circle" %>
+        <% end %>
+      </div>
+      <div class="flex-grow-1 ms-3">
+        <p class="fw-bold mb-0"><%= @tweet_presenter.display_name %></p>
+
+        <p class="text-muted mb-1">@<%= @tweet_presenter.username %></p>
+
+        <p class="fs-4 mb-2"><%= @tweet_presenter.body %></p>
+
+        <p class="text-muted">
+          <%= @tweet_presenter.tweet.created_at.strftime("%l:%M %p") %> · <%= @tweet_presenter.tweet.created_at.strftime("%b %d, %Y") %> 
+        </p>
+
+        <div class="d-flex justify-content-start">
+          <div class="me-4"><span class="fw-bold">0</span> Views</div>
+          <div class="me-4"><span class="fw-bold">0</span> Retweets</div>
+          <div class="me-4"><span class="fw-bold"><%= @tweet_presenter.likes_count %></span> Likes</div>
+        </div>
+
+        <div class="d-flex justify-content-evenly action-links">
+          <div>
+            <%= link_to tweet_path(@tweet_presenter.tweet), class: "text-decoration-none text-black replies" do %>
+              <div data-ignore-click="true" class="d-flex align-items-center">
+                <i class="bi bi-chat fs-4 me-1"></i>
+              </div>
+            <% end %>
+          </div>
+          <div>
+            <%= link_to "#", class: "text-decoration-none text-black retweets" do %>
+              <div data-ignore-click="true" class="d-flex align-items-center">
+                <i class="bi bi-arrow-repeat fs-4 me-1"></i>
+              </div>
+            <% end %>
+          </div>
+          <div>
+            <%= link_to @tweet_presenter.like_tweet_url, data: { "turbo-method": @tweet_presenter.like_turbo_data_method }, class: "text-decoration-none text-black " + @tweet_presenter.like_icon_class do %>
+              <div data-ignore-click="true" class="d-flex align-items-center">
+                <i class="bi <%= @tweet_presenter.like_icon %> fs-4 me-1"></i>
+              </div>
+            <% end %>
+          </div>
+          <div>
+            <%= link_to @tweet_presenter.bookmark_tweet_url, data: { "turbo-method": @tweet_presenter.bookmark_turbo_data_method }, class: "text-decoration-none text-black bookmark" do %>
+              <div data-ignore-click="true" class="d-flex align-items-center">
+                <i class="bi <%= @tweet_presenter.bookmark_icon %> fs-4 me-1"></i>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <div class="col">
