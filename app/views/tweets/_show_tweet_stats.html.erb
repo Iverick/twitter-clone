@@ -1,0 +1,38 @@
+<div id="tweet_stats">
+  <div class="d-flex justify-content-start mb-4">
+    <div class="me-4"><span class="fw-bold">0</span> Views</div>
+    <div class="me-4"><span class="fw-bold"><%= tweet_presenter.retweets_count %></span> Retweets</div>
+    <div class="me-4"><span class="fw-bold"><%= tweet_presenter.likes_count %></span> Likes</div>
+  </div>
+
+  <div class="d-flex justify-content-evenly action-links">
+    <div>
+      <%= link_to tweet_path(tweet_presenter.tweet), class: "text-decoration-none text-black replies" do %>
+        <div class="d-flex align-items-center">
+          <i class="bi bi-chat fs-4 me-1"></i>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to tweet_presenter.retweet_url(source: "tweet_show"), data: { "turbo-method": tweet_presenter.retweet_turbo_data_method }, class: "text-decoration-none text-black " + tweet_presenter.retweet_icon_class do %>
+        <div class="d-flex align-items-center">
+          <i class="bi bi-arrow-repeat fs-4 me-1"></i>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to tweet_presenter.like_tweet_url(source: "tweet_show"), data: { "turbo-method": tweet_presenter.like_turbo_data_method }, class: "text-decoration-none text-black " + tweet_presenter.like_icon_class do %>
+        <div class="d-flex align-items-center">
+          <i class="bi <%= tweet_presenter.like_icon %> fs-4 me-1"></i>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to tweet_presenter.bookmark_tweet_url(source: "tweet_show"), data: { "turbo-method": tweet_presenter.bookmark_turbo_data_method }, class: "text-decoration-none text-black bookmark" do %>
+        <div class="d-flex align-items-center">
+          <i class="bi <%= tweet_presenter.bookmark_icon %> fs-4 me-1"></i>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
