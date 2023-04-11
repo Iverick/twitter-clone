@@ -1,14 +1,24 @@
 require "rails_helper"
 
 RSpec.describe "Tweets", type: :request do
+  let(:user) { create(:user) }
+  let(:tweet) { create(:tweet) }
+
+  before { sign_in user }
+
   describe "GET show" do
     it "succeeds" do
-      user = create(:user)
-      sign_in user
-
-      tweet = create(:tweet)
       get tweet_path(tweet)
       expect(response).to have_http_status(:success) 
+    end
+
+    it "increments the view count if the tweet has not been viewed" do
+      expect { get tweet_path(tweet) }.to change { View.count }.by(1)
+    end
+
+    it "does not incerement the view count if the tweet has already been viewed" do
+      create(:view, user: user, tweet: tweet)
+      expect { get tweet_path(tweet) }.not_to change { View.count }
     end
   end
 
