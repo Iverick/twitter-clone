@@ -1,6 +1,6 @@
 class Tweet < ApplicationRecord
   belongs_to :user
-
+  
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_users, through: :bookmarks, source: :user
   has_many :likes, dependent: :destroy
@@ -9,6 +9,8 @@ class Tweet < ApplicationRecord
   has_many :retweeted_users, through: :retweets, source: :user
   has_many :views, dependent: :destroy
   has_many :viewed_users, through: :views, source: :user
+  belongs_to :parent_tweet, foreign_key: :parent_tweet_id, class_name: "Tweet", optional: true
+  has_many :reply_tweets, foreign_key: :parent_tweet_id, class_name: "Tweet"
 
   validates :body, presence: true, length: { maximum: 280 }
 end
