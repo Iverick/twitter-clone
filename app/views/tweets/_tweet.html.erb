@@ -16,7 +16,7 @@
           <%= link_to tweet_path(tweet_presenter.tweet), class: "text-decoration-none text-black replies" do %>
             <div data-ignore-click="true" class="d-flex align-items-center">
               <i class="bi bi-chat fs-5 me-1"></i>
-              <span class="mb-1">Replies</span>
+              <span class="mb-1"><%= tweet_presenter.reply_tweets_count %></span>
             </div>
           <% end %>
         </div>
