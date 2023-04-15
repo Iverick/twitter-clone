@@ -24,3 +24,9 @@ Things you may want to cover:
 - Code for the project from this series of videos
 
   `https://www.youtube.com/playlist?list=PLCawOXF4xaJLb9HwPWiizGBNupJszY6bR`
+
+- Run the following command in separate terminals from the root directory to start a project
+
+  `rails jobs:work`
+
+  `bin/dev`
