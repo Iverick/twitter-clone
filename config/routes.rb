@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   get :dashboard, to: "dashboard#index"
+  get :profile, to: "profiles#show"
 
   resources :usernames, only: [:new, :update]
 end

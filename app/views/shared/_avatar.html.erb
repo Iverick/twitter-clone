@@ -1,0 +1,5 @@
+<% if current_user.avatar.present? %>
+  <%= image_tag current_user.avatar, size: size, class: "rounded-circle" %>
+<% else %>
+  <%= image_tag "userpic.png", size: size, class: "rounded-circle" %>
+<% end %>
