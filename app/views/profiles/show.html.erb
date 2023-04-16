@@ -16,14 +16,15 @@
       <%= render "shared/avatar", size: 132 %>
     </div>
     <div>
-      <%= link_to "Edit Profile", "#", class: "btn btn-twitter-outline rounded-pill" %>
+      <%= button_tag "Edit Profile", data: { "bs-toggle": "modal", "bs-target": "#profile-edit-modal" }, class: "btn btn-twitter-outline rounded-pill" %>
     </div>
   </div>
 
   <div>
     <p class="fs-4 fw-semibold mb-0"><%= current_user.display_name %></p>
     <p>@<%= current_user.username %></p>
-    <p>Test Bio</p>
+    <p><%= current_user.bio %></p>
+
     <div class="d-flex justify-content-start mb-3">
       <div class="d-flex align-items-center me-4">
         <i class="bi bi-geo-alt fs-5 text-muted me-2"></i>
@@ -47,14 +48,25 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
 </div>
 
 <div class="col">
   Column
+</div>
+
+<!-- Edit Profile Modal -->
+<div class="modal" id="profile-edit-modal" tabindex="-1" aria-labelledby="profile-edit-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <button type="button" class="btn-close mx-0" data-bs-dismiss="modal" aria-label="Close" id="close-modal-btn">
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>Profile Edit Modal</h1>
+
+        <%= render "shared/profile_form" %>
+      </div>
+    </div>
+  </div>
 </div>
