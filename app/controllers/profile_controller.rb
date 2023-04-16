@@ -1,4 +1,4 @@
-class ProfilesController < ApplicationController
+class ProfileController < ApplicationController
   before_action :authenticate_user!
 
   def show
@@ -6,7 +6,10 @@ class ProfilesController < ApplicationController
 
   def update
     current_user.update(user_params[:password].blank? ? user_params.except(:password) : user_params)
-    redirect_to profile_path
+    respond_to do |format|
+      format.html { redirect_to profile_path }
+      format.turbo_stream
+    end
   end
 
   private
