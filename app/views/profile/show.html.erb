@@ -13,14 +13,14 @@
 
   <div class="d-flex justify-content-between align-items-center mb-3">
     <div>
-      <%= render "shared/avatar", size: 132 %>
+      <%= render partial: "shared/avatar", locals: { user: current_user, size: 132 }%>
     </div>
     <div>
       <%= button_tag "Edit Profile", data: { "bs-toggle": "modal", "bs-target": "#profile-edit-modal" }, class: "btn btn-twitter-outline rounded-pill" %>
     </div>
   </div>
 
-  <%= render "profile_section" %>
+  <%= render "profile_section", user: current_user %>
 </div>
 
 <div class="col">

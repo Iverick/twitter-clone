@@ -1,6 +1,6 @@
 <div class="d-flex tweet hover py-3 px-3">
   <div class="flex-shrink-0">
-      <%= render "shared/avatar", size: 48 %>
+    <%= render partial: "shared/avatar", locals: { user: current_user, size: 48 }%>
   </div>
 
   <div class="flex-grow-1 ms-3">
