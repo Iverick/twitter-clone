@@ -15,9 +15,8 @@
     <div>
       <%= render partial: "shared/avatar", locals: { user: @user, size: 132 }%>
     </div>
-    <div>
-      <%= link_to "Follow", "#", class: "btn btn-twitter-outline rounded-pill" %>
-    </div>
+
+    <%= render "follow_button", user: @user, current_user: current_user %>
   </div>
 
   <%= render "profile/profile_section", user: @user %>
