@@ -6,6 +6,14 @@ RSpec.describe "Bookmarks", type: :request do
 
   before { sign_in user }
 
+  describe "GET index" do
+    it "succeeds" do
+      get bookmarks_path
+      expect(response).to have_http_status(:success)
+    end
+  end
+  
+
   describe "POST create" do
     it "creates a new bookmark" do
       expect { post tweet_bookmarks_path(tweet), xhr: true }.to change { Bookmark.count }.by(1)
