@@ -13,6 +13,7 @@ class FollowingsController < ApplicationController
   def destroy
     user
     following = Following.find(params[:id])
+    @follower = following.following_user
     following.destroy
 
     respond_to do |format|

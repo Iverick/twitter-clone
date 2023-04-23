@@ -12,11 +12,11 @@
         </div>
       <% end %>
 
-      <% if user.url.present? %>
+      <% if user.profile_url.present? %>
         <div class="d-flex align-items-center me-4">
           <i class="bi bi-link-45deg fs-5 text-muted me-2"></i>
           <span class="text-muted">
-            <%= link_to user.url, user.url, target: :_blank, class: "text-decoration-none" %>
+            <%= link_to user.profile_url, user.profile_url, target: :_blank, class: "text-decoration-none" %>
           </span>
         </div>
       <% end %>
@@ -29,10 +29,10 @@
 
     <div class="d-flex justify-content-start">
       <div class="me-4">
-        <span class="fw-semibold">14</span> Following
+        <span class="fw-semibold"><%= user.following_count %></span> Following
       </div>
       <div>
-        <span class="fw-semibold">88</span> Followers
+        <span class="fw-semibold"><%= user.follower_count %></span> Followers
       </div>
     </div>
   </div>

@@ -2,13 +2,19 @@ require "rails_helper"
 
 RSpec.describe "User", type: :request do
   let(:user) { create(:user) }
+  let(:user_2) { create(:user) }
 
   before { sign_in user }
 
   describe "GET show" do
     it "succeeds" do
-      get user_path(user)
+      get user_path(user_2)
       expect(response).to have_http_status(:success) 
+    end
+
+    it "redirects to profile_path if the user tries to see his own page" do
+      get user_path(user)
+      expect(response).to redirect_to profile_path
     end
   end
 end
