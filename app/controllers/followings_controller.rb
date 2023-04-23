@@ -3,7 +3,7 @@ class FollowingsController < ApplicationController
 
   def create
     following = user.followings.create(following_params)
-
+    @follower = following.following_user
     respond_to do |format|
       format.html { redirect_to user_path(following.following_user) }
       format.turbo_stream
