@@ -16,12 +16,37 @@
       <%= render partial: "shared/avatar", locals: { user: @user, size: 132 }%>
     </div>
 
-    <%= render "follow_button", user: @user, current_user: current_user %>
+    <% if controller_name == "profile" %>
+      <%= button_tag "Edit Profile", data: { "bs-toggle": "modal", "bs-target": "#profile-edit-modal" }, class: "btn btn-twitter-outline rounded-pill" %>
+    <% else %>
+      <%= render "follow_button", user: @user, current_user: current_user %>
+    <% end %>
   </div>
 
-  <%= render "profile/profile_section", user: @user %>
+  <%= render "users/profile_section", user: @user %>
 </div>
 
 <div class="col">
   Column
 </div>
+
+<% if controller_name == "profile" %>
+  <!-- Edit Profile Modal -->
+  <div class="modal" id="profile-edit-modal" tabindex="-1" aria-labelledby="profile-edit-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <div class="d-flex justify-content-start align-items-center">
+            <button type="button" class="close-modal-btn btn-close me-4" data-bs-dismiss="modal" aria-label="Close">
+            </button>
+
+            <h4 class="mb-0">Edit profile</h4>
+          </div>
+        </div>
+        <div class="modal-body">
+          <%= render "users/profile_form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -2,6 +2,8 @@ class ProfileController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @user = current_user
+    render "users/show"
   end
 
   def update
