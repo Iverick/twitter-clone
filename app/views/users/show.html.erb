@@ -11,23 +11,9 @@
     </div>
   </div>
 
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <div>
-      <%= render partial: "shared/avatar", locals: { user: @user, size: 132 }%>
-    </div>
-
-    <% if controller_name == "profile" %>
-      <%= button_tag "Edit Profile", data: { "bs-toggle": "modal", "bs-target": "#profile-edit-modal" }, class: "btn btn-twitter-outline rounded-pill" %>
-    <% else %>
-      <%= render "follow_button", user: @user, current_user: current_user %>
-    <% end %>
-  </div>
-
   <%= render "users/profile_section", user: @user %>
 
-  <div id="tweets" class="mt-4">
-    <%= render partial: "tweets/tweet", collection: @tweets, as: :tweet_presenter %>
-  </div>
+  <%= render "users/tweets_collection", tweet_presenters: @tweets %>
 </div>
 
 <div class="col">
