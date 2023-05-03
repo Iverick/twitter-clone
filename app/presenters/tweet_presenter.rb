@@ -9,7 +9,7 @@ class TweetPresenter
 
   attr_reader :tweet, :current_user
 
-  delegate :user, :body, :likes, :retweets, :likes_count, :retweets_count, :reply_tweets_count, :views_count, to: :tweet
+  delegate :user, :likes, :retweets, :likes_count, :retweets_count, :reply_tweets_count, :views_count, to: :tweet
   delegate :display_name, :username, :avatar, to: :user
 
   def created_at
@@ -24,6 +24,13 @@ class TweetPresenter
     return user.avatar if user.avatar.present?
 
     ActionController::Base.helpers.asset_path("userpic.png")
+  end
+  
+  def body_html(p_class: "")
+    text = tweet.body.split(" ").map do |word|
+      word.starts_with?("#") ? "<a class=\"twitter-link\">#{word}</a>" : word
+    end
+    "<p class=\"#{p_class}\">#{text.join(" ")}</p>"
   end
 
   # Like helper methods
