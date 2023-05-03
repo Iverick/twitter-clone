@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_24_194838) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_203301) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,9 +78,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_194838) do
   end
 
   create_table "hashtags", force: :cascade do |t|
-    t.string "name"
+    t.string "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tag"], name: "index_hashtags_on_tag"
   end
 
   create_table "hashtags_tweets", id: false, force: :cascade do |t|
