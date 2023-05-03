@@ -1,0 +1,15 @@
+<div class="col-6">
+  <div class="mb-4">
+    <%= link_to "Explore", hashtags_path, class: "fs-5 fw-semibold text-decoration-none text-black" %>
+  </div>
+
+  <% @hashtags.each do |hashtag| %>
+    <div>
+      <%= hashtag.tag %>
+    </div>
+  <% end %>
+</div>
+
+<div class="col">
+  Column
+</div>
