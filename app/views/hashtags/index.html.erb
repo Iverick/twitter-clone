@@ -3,11 +3,7 @@
     <%= link_to "Explore", hashtags_path, class: "fs-5 fw-semibold text-decoration-none text-black" %>
   </div>
 
-  <% @hashtags.each do |hashtag| %>
-    <div>
-      <%= hashtag.tag %>
-    </div>
-  <% end %>
+  <%= render @hashtags%>
 </div>
 
 <div class="col">

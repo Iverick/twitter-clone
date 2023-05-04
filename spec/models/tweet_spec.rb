@@ -30,8 +30,13 @@ RSpec.describe Tweet, type: :model do
     context "when there are hashtags in the body" do
       it "creates hashtags" do
         expect do
-          Tweet.create(user: user, body: "no #hashtags in the #body")
+          Tweet.create(user: user, body: "there are #hashtags in the #body")
         end.to change { Hashtag.count }.by(2)
+      end
+
+      it "creates hashtags assigned to the tweet" do
+        tweet = Tweet.create(user: user, body: "there are #hashtags in the #body")
+        expect(tweet.hashtags.size).to eq(2)
       end
     end
 
@@ -39,7 +44,7 @@ RSpec.describe Tweet, type: :model do
       it "does not create extra hashtags if already in the database table" do
         Hashtag.create(tag: "hashtags")
         expect do
-          Tweet.create(user: user, body: "no #hashtags in the #body")
+          Tweet.create(user: user, body: "there are #hashtags in the #body")
         end.to change { Hashtag.count }.by(1)
       end
     end
