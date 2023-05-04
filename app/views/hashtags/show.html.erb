@@ -1,0 +1,14 @@
+<div class="col-6">
+  <%= link_to :back, class: "me-4 text-decoration-none text-black" do %>
+    <div class="d-flex flex-row align-items-center">
+      <h3 class="me-4 mb-0"><i class="bi bi-arrow-left"></i></h3>
+      <span class="fs-5 fw-bold"><%= @hashtag.tag %></span>
+    </div>
+  <% end %>
+
+  <%= render partial: "tweets/tweet", collection: @tweet_presenters, as: :tweet_presenter %>
+</div>
+
+<div class="col">
+  Column
+</div>
