@@ -1,0 +1,16 @@
+<div class="col">
+  <div class="mb-5">
+    <%= link_to :back, class: "me-4 text-decoration-none text-black" do %>
+      <div class="d-flex flex-row align-items-center">
+        <h3 class="me-4 mb-0"><i class="bi bi-arrow-left"></i></h3>
+        <span class="fs-5 fw-bold">Messages</span>
+      </div>
+    <% end %>
+
+    <%= render partial: "tweets/tweet", collection: @tweet_presenters, as: :tweet_presenter %>
+  </div>
+</div>
+
+<div class="col-6">
+  <%= render "shared/hashtag_sidebar" %>
+</div>

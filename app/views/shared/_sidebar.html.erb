@@ -26,7 +26,7 @@
     </div>
   <% end %>
 
-  <%= link_to "#", class: "d-flex align-items-center fs-4 mb-2 text-decoration-none text-body" do %>
+  <%= link_to message_threads_path, class: "d-flex align-items-center fs-4 mb-2 text-decoration-none text-body #{nav_link_active?('message_threads')}" do %>
     <div class="px-4 py-2 rounded-pill w-100">
       <span class="position-relative home-icon me-4"><%= image_tag "messages.png", width: "28" %></span>
       Messages
